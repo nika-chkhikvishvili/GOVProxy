@@ -1,5 +1,11 @@
 #!/bin/sh
 
+# compare IP, Network and map to specifiec organiaztion
+# Nika Chkhikvishvili
+# Part of GOVProxy Project
+# License GPLv2
+
+
 source /etc/govproxy/govproxy.conf
 
         total_users=$1
