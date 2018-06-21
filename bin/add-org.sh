@@ -1,5 +1,13 @@
 #!/bin/sh
 
+# Add New organization (branch,subdivision,department,company) to existing GOVProxy system
+# This Script will automaically adjust IP Pool parametesr for new organization.
+# Nika Chkhikvishvili
+# Part of GOVProxy Project
+# License GPLv2
+
+
+
 # global stuff
 IFS=$'\n'
 source /etc/govproxy/govproxy.conf
