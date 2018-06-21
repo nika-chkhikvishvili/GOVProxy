@@ -1,0 +1,10 @@
+- hosts: govproxy-nodes
+  tasks:
+      - name: Relaod SQUID
+        command: systemctl reload squid.service
+        async: 0
+        poll: 0
+        ignore_errors: false
+
+
+

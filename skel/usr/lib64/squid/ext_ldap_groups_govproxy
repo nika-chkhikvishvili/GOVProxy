@@ -1,0 +1,22 @@
+#!/bin/sh
+# LDAP Sub organization tree Workaround  - SQUID helper
+# By Nika Chkhikvishvili
+# 2018
+# this helper is part of GOVProxy project
+
+
+while read input; 
+do
+    channel=$(echo $input | cut -d' ' -f1)
+    user=$(echo $input |cut -d' ' -f2)
+    group=$(echo $input |cut -d' ' -f3)
+#    echo "UNFILTERD<<<<: $input">>/tmp/ldap.out
+#    echo "FILTERED::: channel: $channel  user: $user group:$group" >>/tmp/ldap.out
+    ldap_match=$(ldapsearch -h global.catalog -p3268  -b "" -s sub "(extensionAttribute13=$user)" extensionAttribute13 memberof  -D "cn=squid01,ou=DOMAIN Service Accounts,dc=domain,dc=ge" -w '12#-zxC'  -P 3 | sed -e '/#/d' | grep -c "$group")
+     if [[ $ldap_match -ne 1 ]]; then 
+         echo  "$channel ERR"
+     else
+         echo  "$channel OK user=\"$user\""
+     fi
+done
+

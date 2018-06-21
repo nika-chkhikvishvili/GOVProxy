@@ -1,0 +1,41 @@
+- hosts: 
+  tasks:
+    - name: install EPEL Repo 
+      yum: name=sysstat state=latest
+
+    - name: Remove Firewalld
+      yum: name=firewald state=absent
+
+    - name: install all necessery packages
+      yum: pkg={{item}} state=installed
+      with_items:
+       - samba-winbind-clients
+       - xinetd
+       - psmisc
+       - iptables-services
+       - traceroute
+       - net-tools
+       - krb5-workstation
+       - squid
+       - tcpdump
+       - calc 
+       - lshw
+       - wget
+       - git
+       - bash-completion
+       - wget
+       - curl
+       - policycoreutils-python
+       - telnet
+       - bind-libs
+       - iptables-services
+       - vim
+       - open-vm-tools
+       - chrony
+       - openldap-clients
+       - mod_auth_kerb
+       - dropwatch
+       - strace
+       - bind-utils
+       - htop
+       - pwgen

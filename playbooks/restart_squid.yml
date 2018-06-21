@@ -1,0 +1,8 @@
+- hosts: govproxy-nodes
+  tasks:
+      - name: Restart ALL servers
+        command: systemctl restart squid.service
+        async: 0
+        poll: 0
+        ignore_errors: false
+

@@ -1,0 +1,11 @@
+---
+
+-   name: sync local files
+    shell: rsync -vru  /opt/govproxy/* / 
+    args:
+       chdir: /
+       executable: /bin/bash
+
+-   name: restart squid
+    service: name=squid state=reloaded
+    become: true

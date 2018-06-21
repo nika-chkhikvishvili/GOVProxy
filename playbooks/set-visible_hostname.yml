@@ -1,0 +1,44 @@
+- hosts: govproxy-nodes
+  tasks:
+    - name: set yum proxy
+      shell: echo "proxy=http://$IP:3128" >>/etc/yum.conf  
+      args:
+         chdir: /etc/
+         executable: /bin/bash
+
+    - name: install bind-utils, git
+      yum: pkg={{item}} state=installed
+      with_items:
+         - "git"
+         - "bind-utils"
+
+    - name: download configs
+      shell: wget -O /tmp/set-visible_hostname.sh http://mgmt.domain.ge/bin/playbooks/http_storage/set-visible_hostname.sh 
+      args:
+         chdir: /tmp
+         executable: /bin/bash
+    - name: execute configs
+      shell: sh /tmp/set-visible_hostname.sh
+      args:
+         chdir: /tmp
+         executable: /bin/bash
+
+
+    - name: reload squid
+      shell: systemctl reload squid.service
+      args:
+         chdir: /etc
+         executable: /bin/bash
+
+
+
+
+
+
+
+
+
+
+
+
+

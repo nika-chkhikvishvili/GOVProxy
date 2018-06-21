@@ -1,0 +1,22 @@
+- hosts: govproxy-nodes
+  tasks:
+   - name: creating partition label MSDOS
+     shell: parted -a optimal /dev/sdc mklabel msdos
+     args:
+           chdir: /etc/
+           executable: /bin/bash
+   - name: creating partition table /dev/sdc1
+     shell: parted -a optimal /dev/sdc mkpart primary 0% 100%
+     args:
+           chdir: /etc/
+           executable: /bin/bash
+   - name: creating and setting SWAP to fstab
+     shell: echo "$(mkswap /dev/sdc1 | grep -Po UUID=.* ) none swap defaults 0 0" >> /etc/fstab 
+     args:
+           chdir: /etc/
+           executable: /bin/bash
+   - name: turning swap ON
+     shell: swapon -va
+     args:
+           chdir: /etc/
+           executable: /bin/bash

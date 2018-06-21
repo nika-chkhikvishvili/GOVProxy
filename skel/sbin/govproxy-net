@@ -1,0 +1,49 @@
+#!/bin/sh
+
+# by Nika Chkhikvishvili
+# 2018
+# License: undecided right now
+
+
+rule=$1
+rollback=$2
+
+
+
+
+if [[ "$rollback" == "rollback" ]]; then 
+  echo "ROLLBACK CALLED"
+for  undo_rule in $(ls -d /etc/govproxy/localconf/net-rules/rollback/*); do 
+     echo "deleting rule $undo_rule"
+     sh $undo_rule
+
+done
+fi
+
+
+
+
+
+
+if [[ -z "$rule" ]]; then
+
+# default boot conf
+for net_rule in /etc/govproxy/localconf/net-rules/*.netconf;
+  do
+    echo "executing static rule: $net_rule"
+    sh  $net_rule
+       if [ $? -ne 0 ]; then
+       echo "something went wrong :("
+       exit 1
+    fi
+
+
+done
+
+
+
+
+else  echo "executing rule: $rule"
+      sh  $rule;
+fi
+

@@ -1,0 +1,8 @@
+- hosts: govproxy-nodes
+  tasks:
+    - name: any command here
+      shell: rm -rf /var/tmp/krb5_RC*; rm -rf /var/tmp/HTTP_23
+      args:
+         chdir: /var/tmp/
+         executable: /bin/bash
+

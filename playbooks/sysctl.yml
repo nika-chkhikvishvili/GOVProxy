@@ -1,0 +1,109 @@
+- hosts: govproxy-nodes
+  tasks:
+      - name: Apply sysctl parameters
+        shell: echo >/etc/sysctl.conf
+        args:
+          chdir: /etc/
+          executable: /bin/bash
+
+
+      - sysctl:
+          name: net.ipv4.conf.eth0.arp_ignore 
+          value: 1  
+          sysctl_set: yes
+          state: present
+          reload: yes
+          
+          
+      - sysctl:
+          name: net.ipv4.conf.eth0.arp_announce 
+          value:  2
+          sysctl_set: yes
+          state: present
+          reload: yes
+          
+          
+      - sysctl:
+          name: net.ipv4.tcp_sack 
+          value:  1
+          sysctl_set: yes
+          state: present
+          reload: yes
+          
+          
+      - sysctl:
+          name: net.core.netdev_budget 
+          value:  300
+          sysctl_set: yes
+          state: present
+          reload: yes
+          
+          
+      - sysctl:
+          name: net.core.rmem_default 
+          value:  262144
+          sysctl_set: yes
+          state: present
+          reload: yes
+          
+          
+      - sysctl:
+          name: net.core.rmem_max 
+          value:  262144
+          sysctl_set: yes
+          state: present
+          reload: yes
+          
+          
+      - sysctl:
+          name: net.core.wmem_default 
+          value:  262144
+          sysctl_set: yes
+          state: present
+          reload: yes
+          
+          
+      - sysctl:
+          name: net.core.wmem_max 
+          value:  262144
+          sysctl_set: yes
+          state: present
+          reload: yes
+          
+          
+      - sysctl:
+          name: net.ipv4.tcp_low_latency 
+          value:  1
+          sysctl_set: yes
+          state: present
+          reload: yes
+          
+          
+      - sysctl:
+          name: net.core.netdev_max_backlog 
+          value:  4000
+          sysctl_set: yes
+          state: present
+          reload: yes
+          
+          
+      - sysctl:
+          name: net.ipv4.ip_local_port_range 
+          value:  5000 65000
+          sysctl_set: yes
+          state: present
+          reload: yes
+          
+          
+      - sysctl:
+          name: net.ipv4.tcp_max_syn_backlog 
+          value:  16384
+          sysctl_set: yes
+          state: present
+          reload: yes
+          
+ 
+          
+
+
+

@@ -1,0 +1,6 @@
+modprobe dummy numdummies=2
+ip link set dummy0 up
+ip link set dummy1 up
+# IP address of Load balancer DD VIP
+ip addr add $VIP/32 dev dummy0
+ip addr add $VIP/32 dev dummy1

@@ -1,0 +1,10 @@
+- hosts: govproxy-nodes
+  tasks:
+      - name: Restart ALL servers
+        command: sed -i 's/127.0.0.1.*/127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 squid/g' /etc/hosts
+        async: 0
+        poll: 0
+        ignore_errors: false
+
+
+

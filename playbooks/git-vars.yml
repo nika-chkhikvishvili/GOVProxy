@@ -1,0 +1,9 @@
+---
+# Update this to your own settings
+# Part of GOVProxy project
+# Nika Chkhikvishvili
+project_name: govproxy
+project_root: /opt/govproxy
+project_repo: http://$user:$password@git.domain.ge/root/govproxy.git
+branch: HEAD
+force: yes

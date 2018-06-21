@@ -1,0 +1,19 @@
+- hosts: govproxy-nodes
+  tasks:
+    - name: Set DNS config
+      shell: nmcli con mod ens192 ipv4.dns "$IP1 $IP2"
+      args:
+         chdir: /etc/
+         executable: /bin/bash
+    - name:  restart NetworkManager
+      shell: systemctl restart NetworkManager.service
+      args:
+         chdir: /etc/
+         executable: /bin/bash
+
+    - name:  restart SQUID
+      shell: systemctl restart squid.service
+      args:
+         chdir: /etc/
+         executable: /bin/bash
+

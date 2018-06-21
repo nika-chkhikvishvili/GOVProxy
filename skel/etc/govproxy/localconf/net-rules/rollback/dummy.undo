@@ -1,0 +1,4 @@
+ip addr del $VIP/32 dev dummy0
+ip link set dummy0 down
+rmmod dummy
+
