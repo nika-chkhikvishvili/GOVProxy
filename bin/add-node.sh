@@ -1,4 +1,11 @@
 #!/bin/sh
+# Add fresh Linux Node to existing GOVProxy system
+# This Script Dinamicaly scales existing node configuration 
+# including Load balancer configs.
+# Nika Chkhikvishvili
+# Part of GOVProxy Project
+# License GPLv2
+
 
 # global stuff
 IFS=$'\n'
