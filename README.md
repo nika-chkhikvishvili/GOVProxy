@@ -14,4 +14,4 @@ Unified proxy system with filtering and caching functionalities designed for inf
 - Real-time monitoring
 - Dynamic Scaling (adding deleting nodes from system without downtime)
 
-![alt tag](https://drive.google.com/open?id=1mvYx9qERxcrSXw-DvPz5Mr_wvzUEMJxS)
+![alt tag](https://raw.githubusercontent.com/nika-chkhikvishvili/GOVProxy/master/GOVProxy.png)
