@@ -1,5 +1,12 @@
 #!/bin/sh
 
+# this script will check squid operational status
+# not for direct execution (called from Ansible)
+# Nika Chkhikvishvili
+# Part of GOVProxy Project
+# License GPLv2
+
+
 IFS=$' '
 args=$@
 
