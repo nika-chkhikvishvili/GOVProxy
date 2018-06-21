@@ -1,4 +1,9 @@
 #!/bin/sh
+# Calculate Load Distribution on each Active node
+# Create content for data.php
+# Nika Chkhikvishvili
+# Part of GOVProxy Project
+# License GPLv2
 
 
 # global stuff
